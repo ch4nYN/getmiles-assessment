@@ -49,6 +49,9 @@ export default {
     //starting of drag event emitter
     dragStart(e) {
       this.selectedReward = e.target.cloneNode(true);
+      this.selectedReward.addEventListener('dragstart', (e) => {
+        this.selectedReward = e.target;
+      })
       this.selectedReward.children[0].addEventListener('click', this.removeReward);
     },
     // needed for prevent default
