@@ -1,6 +1,6 @@
 <template>
   <div class="reward-category-container">
-    <h4 class="title">get miles</h4>
+    <h4 class="title">reward category drop &#129322;</h4>
     <div class="reward-side">
       <h5 class="side-title">Rewards</h5>
       <div class="reward" v-for="(reward, index) in rewards" :key="index" :ref="reward" draggable="true">
