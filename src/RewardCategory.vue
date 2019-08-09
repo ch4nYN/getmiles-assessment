@@ -41,9 +41,13 @@ export default {
     }
   },
   methods: {
+    removeReward(e) {
+      console.log(e);
+    },
     dragStart(e) {
       // console.log('drag start');
       this.selectedReward = e.target.cloneNode(true);
+      this.selectedReward.children[0].addEventListener('click', this.removeReward);
       // console.log(e);
     },
     dragEnd() {
@@ -66,7 +70,9 @@ export default {
         console.log(c.innerText + " || " + this.selectedReward.innerText)
         if (c.innerHTML === this.selectedReward.innerHTML) dup = true;
       }
-      if (!dup) e.target.append(this.selectedReward);
+      if (!dup) {
+        e.target.append(this.selectedReward)
+      };
     }
   }
 }
