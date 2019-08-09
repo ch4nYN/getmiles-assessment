@@ -43,6 +43,9 @@ export default {
   methods: {
     removeReward(e) {
       console.log(e);
+      let selectedCategory = e.target.parentNode.parentNode;
+      let selectedReward = e.target.parentNode;
+      selectedCategory.removeChild(selectedReward);
     },
     dragStart(e) {
       // console.log('drag start');
