@@ -27,10 +27,12 @@ export default {
     }
   },
   mounted() {
+    //setting event emitters for rewards to be dragged
     let rewards = document.getElementsByClassName('reward');
     for (let r of rewards) {
       r.addEventListener('dragstart', this.dragStart);
     };
+    // adding event emitters needed for dropping the rewards into categories
     let categories = document.getElementsByClassName("category");
     for (let c of categories) {
       c.addEventListener('dragover', this.dragOver);
@@ -38,26 +40,25 @@ export default {
     }
   },
   methods: {
+    //removing reward
     removeReward(e) {
-      console.log(e);
       let selectedCategory = e.target.parentNode.parentNode;
       let selectedReward = e.target.parentNode;
       selectedCategory.removeChild(selectedReward);
     },
+    //starting of drag event emitter
     dragStart(e) {
-      // console.log('drag start');
       this.selectedReward = e.target.cloneNode(true);
       this.selectedReward.children[0].addEventListener('click', this.removeReward);
-      // console.log(e);
     },
+    // needed for prevent default
     dragOver(e) {
       e.preventDefault();
     },
+    // dropping reward into category, only ones that are not DUPLICATES
     dragDrop(e) {
-      console.log(e)
       let dup = false;
       for (let c of e.target.children) {
-        console.log(c.innerText + " || " + this.selectedReward.innerText)
         if (c.innerHTML === this.selectedReward.innerHTML) dup = true;
       }
       if (!dup) {
