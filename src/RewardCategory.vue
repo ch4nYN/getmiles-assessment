@@ -30,13 +30,10 @@ export default {
     let rewards = document.getElementsByClassName('reward');
     for (let r of rewards) {
       r.addEventListener('dragstart', this.dragStart);
-      r.addEventListener('dragend', this.dragEnd);
     };
     let categories = document.getElementsByClassName("category");
     for (let c of categories) {
       c.addEventListener('dragover', this.dragOver);
-      c.addEventListener('dragenter', this.dragEnter);
-      c.addEventListener('dragleave', this.dragLeave);
       c.addEventListener('drop', this.dragDrop);
     }
   },
@@ -53,18 +50,8 @@ export default {
       this.selectedReward.children[0].addEventListener('click', this.removeReward);
       // console.log(e);
     },
-    dragEnd() {
-      // console.log('drag END')
-    },
     dragOver(e) {
       e.preventDefault();
-      // console.log('drag over')
-    },
-    dragEnter() {
-      // console.log('drag enter')
-    },
-    dragLeave() {
-      // console.log('drag leave')
     },
     dragDrop(e) {
       console.log(e)
